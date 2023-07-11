@@ -13,9 +13,11 @@ The script monitors the following system parameters:
 
 ## Output File
 
-The script generates an HTML file with a table that includes all the system parameters and their respective values. The output file name and path can be modified in the script. The default output file is `C:\Temp\SystemReport.html`.
+The script generates an HTML file with a table that includes all the system parameters and their respective values. The output file name and path can be modified in the script. The default output file is `C:\temp\PS-sysmon-html.html`.
 
 ## How to Run
+
+*Powershell Execution Policy must be set to allow scripts to run*
 
 To run the script, open a powershell window and navigate to the folder where the script is located. Then, run the following command:
 
