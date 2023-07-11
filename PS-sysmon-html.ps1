@@ -1,5 +1,5 @@
 # Define the output file name and path
-$outputFile = "C:\Temp\SystemReport.html"
+$outputFile = "%USERPROFILE%\Desktop\PS-sysmon-html.html"
 
 # Define the HTML header and style
 $htmlHeader = @"
@@ -30,7 +30,8 @@ $htmlFooter = @"
 $tableRows = @()
 
 # Get the event viewer errors from the last 24 hours
-$eventErrors = Get-WinEvent -FilterHashtable @{LogName="System"; Level=1,2; StartTime=(Get-Date).AddHours(-24)}
+# Use -ErrorAction SilentlyContinue to suppress the error message if no events are found
+$eventErrors = Get-WinEvent -FilterHashtable @{LogName="System"; Level=1,2; StartTime=(Get-Date).AddHours(-24)} -ErrorAction SilentlyContinue
 
 # Add a table row with the event viewer errors count
 $tableRows += "<tr><td>Event Viewer Errors (last 24 hours)</td><td>$($eventErrors.Count)</td></tr>"
@@ -63,7 +64,14 @@ $memoryPercent = [math]::Round(($memoryUsage.TotalVisibleMemorySize - $memoryUsa
 $tableRows += "<tr><td>Memory Utilization</td><td>$memoryPercent%</td></tr>"
 
 # Get the CPU and GPU temperature information
-$temperatureInfo = Get-WmiObject -Class MSAcpi_ThermalZoneTemperature -Namespace "root/wmi"
+# Use a try/catch block to handle the exception if the class is not supported and provide a default value of 0 for the temperature
+try {
+    $temperatureInfo = Get-WmiObject -Class MSAcpi_ThermalZoneTemperature -Namespace "root/wmi"
+}
+catch {
+    # Use a default value of 0 for the temperature if the class is not supported
+    $temperatureInfo = @([pscustomobject]@{InstanceName="CPU"; CurrentTemperature=0}, [pscustomobject]@{InstanceName="GPU"; CurrentTemperature=0})
+}
 
 # Loop through each temperature sensor and add a table row with the temperature value in Celsius
 foreach ($temp in $temperatureInfo) {
@@ -87,7 +95,8 @@ $htmlTable = "<table>$tableBody</table>"
 # Create the HTML content by concatenating the header, table and footer
 $htmlContent = $htmlHeader + $htmlTable + $htmlFooter
 
+# Create the folder if it does not exist
+New-Item -Path (Split-Path -Path $outputFile) -ItemType Directory -Force
+
 # Write the HTML content to the output file
 $htmlContent | Out-File -FilePath $outputFile
-
-```.
