@@ -9,7 +9,7 @@ The script monitors the following system parameters:
 - Disk(s) usage percentage
 - CPUs usage percentage
 - Memory utilization percentage
-- CPU and GPU temperature in Celsius
+- CPU and GPU temperature in Celsius (to be implemented)
 
 ## Output File
 
