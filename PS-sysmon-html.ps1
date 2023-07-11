@@ -1,5 +1,5 @@
 # Define the output file name and path
-$outputFile = "%USERPROFILE%\Desktop\PS-sysmon-html.html"
+$outputFile = "C:\temp\PS-sysmon-html.html"
 
 # Define the HTML header and style
 $htmlHeader = @"
@@ -63,15 +63,25 @@ $memoryPercent = [math]::Round(($memoryUsage.TotalVisibleMemorySize - $memoryUsa
 # Add a table row with the memory utilization percentage
 $tableRows += "<tr><td>Memory Utilization</td><td>$memoryPercent%</td></tr>"
 
-# Get the CPU and GPU temperature information
-# Use a try/catch block to handle the exception if the class is not supported and provide a default value of 0 for the temperature
-try {
-    $temperatureInfo = Get-WmiObject -Class MSAcpi_ThermalZoneTemperature -Namespace "root/wmi"
-}
-catch {
-    # Use a default value of 0 for the temperature if the class is not supported
-    $temperatureInfo = @([pscustomobject]@{InstanceName="CPU"; CurrentTemperature=0}, [pscustomobject]@{InstanceName="GPU"; CurrentTemperature=0})
-}
+
+
+#### Fix this temperature code
+
+#
+## Get the CPU and GPU temperature information
+## Use a try/catch block to handle the exception if the class is not supported and provide a default value of 0 for the temperature
+#try {
+#    # Use Get-CimInstance instead of Get-WmiObject
+#    # Use CIM_TemperatureSensor instead of MSAcpi_ThermalZoneTemperature
+#    $temperatureInfo = Get-CimInstance -Class CIM_TemperatureSensor -Namespace "root/wmi"
+#}
+#catch {
+#    # Use a default value of 0 for the temperature if the class is not supported
+#    $temperatureInfo = @([pscustomobject]@{InstanceName="CPU"; CurrentTemperature=0}, [pscustomobject]@{InstanceName="GPU"; CurrentTemperature=0})
+#}
+
+#####
+
 
 # Loop through each temperature sensor and add a table row with the temperature value in Celsius
 foreach ($temp in $temperatureInfo) {
