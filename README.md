@@ -4,7 +4,7 @@ A PowerShell script that generates a detailed, user-friendly HTML report on the 
 
 <div align="center">
   <table>
-    <tr style="vertical-align: top;">
+    <tr>
       <td><img src="screenshot-report.png" alt="Sample HTML Health Report" width="450"></td>
       <td><img src="screenshot-errors.png" alt="Sample Errors Detail Page" width="450"></td>
     </tr>
