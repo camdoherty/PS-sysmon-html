@@ -1,4 +1,4 @@
-# WinHealthReportHTML
+## WinHealthReportHTML
 
 'Windows Health Report to HTML' is a PowerShell script that generates a detailed, user-friendly HTML report on the health and status of a Windows system. It's designed for system administrators to get a quick, actionable overview, perfect for scheduled health checks or initial troubleshooting.
 
@@ -11,13 +11,13 @@
   </table>
 </div>
 
-## Description
+### Description
 
 `WinHealthReportHTML.ps1`, gathers critical system metrics and presents them in a clean, color-coded HTML dashboard. Instead of manually checking Event Viewer, services, and performance counters, you can run this script to generate a complete system health snapshot.
 
 A key feature is the linked error report. If system errors are found, the main report provides a clickable link to a separate HTML page containing the full details of each error, keeping the main dashboard tidy while providing deep-dive information when needed.
 
-## Features
+### Features
 
 -   **General System Information**: Reports the hostname, OS version, architecture, and system uptime.
 -   **Event Viewer Summary**: Counts critical errors and warnings from the System log in the last 24 hours.
@@ -31,7 +31,7 @@ A key feature is the linked error report. If system errors are found, the main r
 -   **Monitored Services Status**: Checks a customizable list of critical services and reports their status (`Running`, `Stopped`, or `NOT FOUND`).
 -   **Clean HTML Output**: Generates a well-formatted and styled HTML report that is easy to read.
 
-## Prerequisites
+### Prerequisites
 
 1.  **PowerShell**: PowerShell 5.1 or higher. (This is standard on Windows 10/11 and Windows Server 2016/2019/2022).
 2.  **Execution Policy**: The PowerShell execution policy on your system must allow scripts to run. If you downloaded this script from the internet, you may need to "unblock" it first by running this command:
@@ -44,7 +44,7 @@ A key feature is the linked error report. If system errors are found, the main r
     ```
 3.  **Administrator Privileges**: The script needs to be **run as an Administrator** to access all system information, especially from WMI/CIM and the Event Log.
 
-## Usage
+### Usage
 
 1.  Open PowerShell **as an Administrator**.
 2.  Navigate to the directory where you saved the script:
@@ -61,7 +61,7 @@ A key feature is the linked error report. If system errors are found, the main r
 
 Open `WinHealthReport.html` in any web browser to view the results.
 
-## Customization
+### Customization
 
 You can easily customize the script by editing the variables in the **`--- Configuration ---`** section at the top of the file.
 
@@ -85,6 +85,6 @@ You can easily customize the script by editing the variables in the **`--- Confi
     $cpuWarningThreshold = 90   # Percentage
     ```
 
-## License
+### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
