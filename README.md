@@ -13,7 +13,7 @@ A PowerShell script that generates a detailed, user-friendly HTML report on the 
 
 ## Description
 
-This script, `WinHealthReportHTML.ps1`, gathers critical system metrics and presents them in a clean, color-coded HTML dashboard. Instead of manually checking Event Viewer, services, and performance counters, you can run this single script to generate a complete snapshot. The report is designed to draw your attention to potential issues (like low disk space or stopped services) using visual cues.
+`WinHealthReportHTML.ps1`, gathers critical system metrics and presents them in a clean, color-coded HTML dashboard. Instead of manually checking Event Viewer, services, and performance counters, you can run this script to generate a complete system health snapshot.
 
 A key feature is the linked error report. If system errors are found, the main report provides a clickable link to a separate HTML page containing the full details of each error, keeping the main dashboard tidy while providing deep-dive information when needed.
 
