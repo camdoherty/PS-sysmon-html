@@ -5,7 +5,7 @@
 <div align="center">
   <table border="0">
     <tr>
-      <td><img src="screenshot-report.png" alt="Sample HTML Health Report" width="450"></td>
+      <td align="right"><img src="screenshot-report.png" alt="Sample HTML Health Report" width="450"></td>
       <td><img src="screenshot-errors.png" alt="Sample Errors Detail Page" width="450"></td>
     </tr>
   </table>
