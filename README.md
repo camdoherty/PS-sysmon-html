@@ -2,13 +2,9 @@
 
 'Windows Health Report to HTML' is a PowerShell script that generates a detailed, user-friendly HTML report on the health and status of a Windows system. It's designed for system administrators to get a quick, actionable overview, perfect for scheduled health checks or initial troubleshooting.
 
-<div align="center">
-  <table border="0">
-    <tr>
-      <td align="right"><img src="screenshot-full.png" alt="Sample HTML Health Report" width="900"></td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+  <img src="screenshot-full.png" alt="Sample HTML Health Report" width=900>
+</p>
 
 
 ### Description
